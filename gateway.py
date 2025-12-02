@@ -3,6 +3,7 @@ import os
 from typing import Optional
 
 from fastapi import FastAPI, Request, Response, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import httpx
 from dotenv import load_dotenv
@@ -10,6 +11,21 @@ from dotenv import load_dotenv
 load_dotenv()
 
 APP = FastAPI(title="Simple Python API Gateway")
+
+# ------------------------------
+#  CORS
+# ------------------------------
+APP.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:8081",
+        "https://akura.vercel.app",
+        "*",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 BASE_DIR = os.path.dirname(__file__)
 ROUTES_FILE = os.path.join(BASE_DIR, "routes.json")
