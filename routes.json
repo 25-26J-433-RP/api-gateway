@@ -1,0 +1,4 @@
+{
+  "/service1": "secret:SERVICE1_URL",
+  "/service2": "secret:SERVICE2_URL"
+}
