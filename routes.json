@@ -1,4 +1,4 @@
 {
-  "/service1": "secret:SERVICE1_URL",
-  "/service2": "secret:SERVICE2_URL"
+  "/sinhala-visual-mapping-service": "secret:SINHALA_VISUAL_MAPPING_SERVICE_URL",
+  "/sinhala-text-feedback-service": "secret:SINHALA_TEXT_FEEDBACK_SERVICE_URL"
 }
