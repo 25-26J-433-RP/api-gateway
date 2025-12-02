@@ -1,0 +1,51 @@
+# Exclude Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+venv.bak/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Byte-compiled / caches
+*.pyc
+*.pyo
+
+# Git
+.git
+.gitignore
+
+# Environment / secrets
+.env
+.env.*
+secrets.env
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and reports
+*.log
+.pytest_cache/
+htmlcov/
+.coverage
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker compose overrides
+docker-compose.override.yml
+docker-compose.*.yml
