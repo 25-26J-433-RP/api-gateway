@@ -99,15 +99,33 @@ async def proxy(full_path: str, request: Request):
         raise HTTPException(status_code=404, detail="No upstream matching path")
 
     prefix, upstream, suffix = found
-    # build upstream URL
-    # do not duplicate slashes
-    if suffix.startswith("/"):
-        target_url = f"{upstream}{suffix}"
+    # build upstream URL safely (avoid adding an extra slash when upstream
+    # already contains a path). Use urlparse to detect whether the
+    # configured upstream contains its own path component.
+    from urllib.parse import urlparse
+
+    # suffix == "/" means caller requested exactly the prefix. If the
+    # upstream already contains a non-root path (e.g. .../health), use the
+    # upstream as-is. Otherwise ensure there is a single trailing slash.
+    if suffix == "/":
+        parsed = urlparse(upstream)
+        if parsed.path and parsed.path != "/":
+            target_url = upstream
+        else:
+            target_url = upstream + "/"
     else:
-        target_url = f"{upstream}/{suffix}"
+        # join without duplicating slashes
+        target_url = upstream.rstrip("/") + "/" + suffix.lstrip("/")
 
     # prepare headers
-    req_headers = {k: v for k, v in request.headers.items() if k.lower() not in HOP_BY_HOP}
+    # do not forward hop-by-hop headers or the original Host header (upstream
+    # needs Host to match its own hostname); let httpx set Host from the
+    # target URL.
+    req_headers = {
+        k: v
+        for k, v in request.headers.items()
+        if k.lower() not in HOP_BY_HOP and k.lower() != "host"
+    }
     # set X-Forwarded-For
     client_host = request.client.host if request.client else ""
     if client_host:
