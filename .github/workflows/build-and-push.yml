@@ -34,7 +34,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/sinhala-essay-grading-app-api-gateway:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/sinhala-essay-grading-app-api-gateway:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/sinhala-essay-grading-api-gateway:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/sinhala-essay-grading-api-gateway:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
