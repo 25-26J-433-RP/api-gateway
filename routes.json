@@ -3,7 +3,8 @@
   "/sinhala-text-feedback-service": "secret:SINHALA_TEXT_FEEDBACK_SERVICE_URL",
   "/sinhala-text-preprocessing-service": "secret:SINHALA_TEXT_PREPROCESSING_SERVICE_URL",
   "/sinhala-ocr-service": "secret:SINHALA_OCR_SERVICE_URL",
-  "/sinhala-audio-feedback-service": "secret:SINHALA_AUDIO_FEEDBACK_SERVICE_URL"
-  ,"/dyslexic-pattern-detection-service": "secret:SINHALA_DYSLEXIC_PATTERN_DETECTION_SERVICE_URL",
-  "/bias-aware-scoring-engine": "secret:SINHALA_BIAS_AWARE_SCORING_ENGINE_URL"
+  "/sinhala-audio-feedback-service": "secret:SINHALA_AUDIO_FEEDBACK_SERVICE_URL",
+  "/dyslexic-pattern-detection-service": "secret:SINHALA_DYSLEXIC_PATTERN_DETECTION_SERVICE_URL",
+  "/bias-aware-scoring-engine": "secret:SINHALA_BIAS_AWARE_SCORING_ENGINE_URL",
+  "/ai-recorrection-workbench": "secret:AI_RECORRECTION_WORKBENCH_URL"
 }
