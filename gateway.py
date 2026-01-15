@@ -20,6 +20,7 @@ APP.add_middleware(
     allow_origins=[
         "http://localhost:8081",
         "https://akura.vercel.app",
+        "https://akura-qa.vercel.app",
         "*",
     ],
     allow_credentials=True,
